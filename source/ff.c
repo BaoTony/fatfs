@@ -5805,7 +5805,7 @@ static FRESULT create_partition (
 		for (n_hd = 8; n_hd != 0 && sz_drv32 / n_hd / n_sc > 1024; n_hd *= 2) ;
 		if (n_hd == 0) n_hd = 255;	/* Number of heads needs to be <256 */
 
-		mem_set(buf, 0, FF_MAX_SS);	/* Clear MBR */
+		mem_set(buf, 0, ss);    /* Clear MBR */^M
 		pte = buf + MBR_Table;	/* Partition table in the MBR */
 		for (i = 0, s_lba32 = n_sc; i < 4 && s_lba32 != 0 && s_lba32 < sz_drv32; i++, s_lba32 += n_lba32) {
 			n_lba32 = (DWORD)plst[i];	/* Get partition size */
